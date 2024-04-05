@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory</title>
+  </head>
+  <style>
+    body > * {
+      margin: 10px;
+      border: solid;
+      margin-left: 0px;
+    }
+    span {
+      font-size: 30px;
+      padding: 3px;
+    }
+  </style>
+  <body>
+    <span id="zz"></span>
+    <div></div>
+    <input id="input" placeholder="Deine Vermutung" />
+    <button onclick="vergleich()" onkeyup="">send</button>
+    <div></div>
+    <div id="ergebnis"></div>
+  </body>
+  <!--  -->
+  <!--  -->
+  <script>
+    const x = Math.floor(Math.random() * 100);
+    document.getElementById("zz").innerHTML = `${x}`;
+    document.getElementById("ergebnis").innerHTML = "Richtig oder Falsch";
+    //   "ergebnisRichtigOderFalsch";
+
+    setTimeout(() => {
+      document.getElementById("zz").hidden = true;
+    }, 3000);
+  </script>
+  <script>
+    function vergleich() {
+      const y = Number(document.body.childNodes[5].value);
+      if (y === x) {
+        document.getElementById("ergebnis").innerHTML = "Richtig";
+        return;
+      }
+      document.getElementById(
+        "ergebnis"
+      ).innerHTML = `Falsch! Richtig wäre ${zzLocal}`;
+    }
+  </script>
+</html>

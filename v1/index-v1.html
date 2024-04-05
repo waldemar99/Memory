@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory</title>
+  </head>
+  <style>
+    body > * > * {
+      margin: 10px;
+      border: solid;
+      margin-left: 0px;
+    }
+    span {
+      border: solid;
+      font-size: 30px;
+      padding: 3px;
+    }
+  </style>
+  <body>
+    <div>
+      <input type="number" name="" id="aZZ" placeholder="AnzahlZufallsZahlen" />
+    </div>
+    <div style="width: fit-content; height: fit-content" id="div-wrap">
+      <div style="border: hidden" id="div-span-wrap">
+        <!-- span dynamisch erzeugen  -->
+      </div>
+
+      <!--  -->
+      <div></div>
+      <!--  -->
+
+      <input id="input" placeholder="Deine Vermutung" autofocus />
+      <button id="btn-send">Pusch or Press Enter</button>
+      <div></div>
+      <div id="ergebnis">Richtig oder Falsch</div>
+    </div>
+    <button
+      onclick="game()"
+      id="btn-new-game"
+      style="background-color: aquamarine; margin-top: 20px"
+    >
+      New Game
+    </button>
+  </body>
+  <!--  -->
+  <!--  -->
+
+  <script>
+    function game() {
+      let aZZ = Number($("aZZ").value); // anzahlZufallsZahlen
+
+      {
+        // Get a reference to the parent element
+        const parentElement = $("div-span-wrap");
+        console.log(parentElement);
+        // Loop through and remove all child nodes
+        while (parentElement.firstChild) {
+          parentElement.removeChild(parentElement.firstChild);
+        }
+      }
+
+      for (let i = 0; i < aZZ; i++) {
+        const newSpan = document.createElement("span");
+        newSpan.setAttribute("class", "zz");
+
+        $("div-span-wrap").appendChild(newSpan);
+      }
+
+      {
+        let i = 0;
+        for (let i = 0; i < aZZ; i++) {
+          document.getElementsByClassName("zz")[i].hidden = false;
+        }
+      }
+
+      const arryOfSecretNumbers = [];
+
+      for (let i = 0; i < aZZ; i++) {
+        const xi = Math.floor(Math.random() * 100);
+        console.log(xi);
+        document.getElementsByClassName("zz")[i].innerHTML = `${xi}`;
+        arryOfSecretNumbers.push(xi);
+      }
+      console.log(arryOfSecretNumbers);
+
+      // Zufallszahlen nach 3 sec ausblenden
+
+      let i = 0;
+      const interval = setInterval(() => {
+        document.getElementsByClassName("zz")[i].hidden = true;
+        i++;
+        if (i === aZZ) {
+          console.log(aZZ);
+          clearInterval(interval);
+        }
+      }, 2_000);
+
+      // Zufallszahl mit Eingabewert vergleichen
+      //
+
+      document.addEventListener("dblclick", (e) => {
+        $("div-wrap").style.position = "relative";
+        $("div-wrap").style.left = `${e.pageX}px`;
+        console.log(e.pageX);
+        $("div-wrap").style.top = `${e.pageY}px`;
+      });
+    }
+    $("btn-send").addEventListener("click", vergleich());
+
+    document.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) {
+        vergleich();
+      }
+    });
+    function vergleich() {
+      console.log($("input").value);
+      if ($("input").value === "") {
+        alert("Bitte Schätzung eingeben!");
+        return;
+      }
+      let meinTip = Number($("input").value);
+      $("input").value = "";
+
+      if (arryOfSecretNumbers.includes(meinTip)) {
+        $("ergebnis").innerHTML = "Richtig";
+        arryOfSecretNumbers.splice(arryOfSecretNumbers.indexOf(meinTip), 1);
+        console.log(arryOfSecretNumbers);
+
+        if (arryOfSecretNumbers.length === 0) {
+          alert("Alle Zahlen gewusst");
+          return;
+        }
+        return;
+      }
+
+      document.getElementById(
+        "ergebnis"
+      ).innerText = `Falsch! Richtig wäre ${arryOfSecretNumbers.toString()}`;
+    }
+    // Querry Function
+    function $(str) {
+      return document.getElementById(str);
+    }
+  </script>
+  <script>
+    $("div-wrap").style.border = "solid";
+    $("div-wrap").style.padding = "3px";
+    $("div-wrap").draggable = true;
+  </script>
+</html>
