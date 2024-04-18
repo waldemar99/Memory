@@ -53,10 +53,10 @@ function game() {
   //
 
   document.addEventListener("dblclick", (e) => {
-    $("div-wrap").style.position = "relative";
-    $("div-wrap").style.left = `${e.pageX}px`;
+    $("body-com").style.position = "relative";
+    $("body-com").style.left = `${e.pageX}px`;
     console.log(e.pageX);
-    $("div-wrap").style.top = `${e.pageY}px`;
+    $("body-com").style.top = `${e.pageY}px`;
   });
 }
 
