@@ -1,3 +1,14 @@
+/**
+ * # function game
+ * --
+ * -- zufallszahlen erzeugen
+ * --
+ * --
+ * ## function eingabewerte mit zufallszahlen vergleichen
+ *
+ * ### feature Game nach doppelclick frei positionieren
+ */
+
 function game() {
   let aZZ = Number($("aZZ").value); // anzahlZufallsZahlen
   {
@@ -48,9 +59,6 @@ function game() {
       clearInterval(interval);
     }
   }, 2000);
-
-  // Zufallszahl mit Eingabewert vergleichen
-  //
 }
 
 $("btn-send").addEventListener("click", vergleich);
@@ -84,10 +92,6 @@ function vergleich() {
   document.getElementById(
     "ergebnis"
   ).innerText = `Falsch! Richtig wäre ${arryOfSecretNumbers.toString()}`;
-}
-// Querry Function
-function $(str) {
-  return document.getElementById(str);
 }
 
 document.addEventListener("dblclick", (e) => {
