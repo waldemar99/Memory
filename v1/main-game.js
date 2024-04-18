@@ -51,13 +51,6 @@ function game() {
 
   // Zufallszahl mit Eingabewert vergleichen
   //
-
-  document.addEventListener("dblclick", (e) => {
-    $("body-com").style.position = "relative";
-    $("body-com").style.left = `${e.pageX}px`;
-    console.log(e.pageX);
-    $("body-com").style.top = `${e.pageY}px`;
-  });
 }
 
 $("btn-send").addEventListener("click", vergleich);
@@ -96,3 +89,10 @@ function vergleich() {
 function $(str) {
   return document.getElementById(str);
 }
+
+document.addEventListener("dblclick", (e) => {
+  $("body-com").style.position = "relative";
+  $("body-com").style.left = `${e.pageX}px`;
+  console.log(e.pageX);
+  $("body-com").style.top = `${e.pageY}px`;
+});
