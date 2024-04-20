@@ -4,41 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <style>
-    body > * > * {
-      margin: 10px;
-      border: solid;
-      margin-left: 0px;
-    }
-    span {
-      border: solid;
-      font-size: 30px;
-      padding: 3px;
-    }
-  </style>
-  <body id="body-com">
-    <div>
-      <input type="number" name="" id="aZZ" placeholder="AnzahlZufallsZahlen" />
-    </div>
-    <div style="width: fit-content; height: fit-content" id="div-wrap">
-      <div style="border: hidden" id="div-span-wrap">
+  <body id="body-complete">
+    <div id="div-wrap">
+      <input
+        type="text"
+        size="31"
+        id="aZZ"
+        placeholder="AnzahlZufallsZahlen oder starte mit 3"
+      />
+
+      <div
+        style="border: hidden; width: fit-content; padding: 20px; margin: 10px"
+        id="div-span-wrap"
+        hidden="true"
+      >
         <!-- span dynamisch erzeugen  -->
       </div>
 
-      <!--  -->
       <div></div>
-      <!--  -->
 
-      <input id="input" placeholder="Deine Vermutung" autofocus />
-      <button id="btn-send">Pusch or Press Enter</button>
+      <input id="input-vermutung" placeholder="Deine Vermutung" autofocus />
+      <button id="btn-send">Click here or Press Enter</button>
       <div></div>
       <div id="ergebnis">Richtig oder Falsch</div>
     </div>
     <button
       onclick="game()"
       id="btn-new-game"
-      style="background-color: aquamarine; margin-top: 20px"
+      style="
+        background-color: aquamarine;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      "
     >
       New Game
     </button>
@@ -49,10 +48,8 @@
       return document.getElementById(str);
     }
   </script>
+  <!-----------------------------------------------------FEATURE MAIN GAME-->
   <script src="./main-game.js"></script>
-  <script>
-    $("div-wrap").style.border = "solid";
-    $("div-wrap").style.padding = "3px";
-    $("div-wrap").draggable = true;
-  </script>
+  <!-----------------------------------------------------FEATURE DBLCLK MOVE-->
+  <script src="./dblclk-move.js"></script>
 </html>

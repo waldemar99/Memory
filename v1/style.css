@@ -1,0 +1,62 @@
+:root {
+  --myborder: solid;
+  --padding-main: 5%;
+  --top-bottom: 2em auto;
+  --top-bottom-right: 30px;
+}
+
+html {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#body-complete {
+  background-color: rgb(177, 215, 184);
+  width: fit-content;
+  border: solid;
+  padding: 10px;
+}
+
+body > * > * {
+  background-color: beige;
+  margin: 10px;
+  border: var(--myborder);
+  margin-left: 0px;
+}
+span {
+  border: solid;
+  font-size: 1em;
+  padding: 5px;
+  margin: var(--top-bottom-rigth);
+}
+
+#div-warp {
+  border: solid;
+  width: fit-content;
+  height: fit-content;
+}
+
+#ergebnis {
+  width: fit-content;
+  padding-left: var(--padding-main);
+  padding-right: var(--padding-main);
+}
+
+#input-vermutung {
+  padding-left: var(--padding-main);
+  padding-right: var(--padding-main);
+}
+
+#aZZ {
+  padding-left: var(--padding-main);
+
+  font-size: 1em;
+  height: 2em;
+}
+
+.zz {
+  margin: auto 5px;
+}

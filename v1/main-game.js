@@ -10,7 +10,11 @@
  */
 
 function game() {
-  let aZZ = Number($("aZZ").value); // anzahlZufallsZahlen
+  let aZZ = 3; // anzahlZufallsZahlen
+  if (Number($("aZZ").value)) {
+    aZZ = Number($("aZZ").value); // anzahlZufallsZahlen
+  }
+
   {
     // Get a reference to the parent element
     const parentElement = $("div-span-wrap");
@@ -26,6 +30,7 @@ function game() {
 
     $("div-span-wrap").appendChild(newSpan);
   }
+  $("div-span-wrap").hidden = false;
 
   {
     for (let i = 0; i < aZZ; i++) {
@@ -59,6 +64,7 @@ function game() {
       clearInterval(interval);
     }
   }, 2000);
+  // $("div-span-wrap").hidden = true;
 }
 
 $("btn-send").addEventListener("click", vergleich);
@@ -93,10 +99,3 @@ function vergleich() {
     "ergebnis"
   ).innerText = `Falsch! Richtig wäre ${arryOfSecretNumbers.toString()}`;
 }
-
-document.addEventListener("dblclick", (e) => {
-  $("body-com").style.position = "relative";
-  $("body-com").style.left = `${e.pageX}px`;
-  console.log(e.pageX);
-  $("body-com").style.top = `${e.pageY}px`;
-});
