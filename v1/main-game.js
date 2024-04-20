@@ -1,13 +1,4 @@
-/**
- * # function game
- * --
- * -- zufallszahlen erzeugen
- * --
- * --
- * ## function eingabewerte mit zufallszahlen vergleichen
- *
- * ### feature Game nach doppelclick frei positionieren
- */
+//
 
 function game() {
   let aZZ = 3; // anzahlZufallsZahlen
@@ -42,7 +33,6 @@ function game() {
 
   for (let i = 0; i < aZZ; i++) {
     const xi = Math.floor(Math.random() * 100);
-    console.log(xi);
     document.getElementsByClassName("zz")[i].innerHTML = `${xi}`;
     arryOfSecretNumbers.push(xi);
   }
@@ -53,34 +43,32 @@ function game() {
   let i = document.getElementsByClassName("zz").length - 1;
 
   const interval = setInterval(() => {
-    console.log(document.getElementsByClassName("zz").length);
-    console.log(i);
-
     if (i >= 0) {
       document.getElementsByClassName("zz")[i].hidden = true;
       i--;
-      console.log(i);
+      if (i === -1) {
+        $("div-span-wrap").hidden = true;
+      }
     } else {
       clearInterval(interval);
     }
-  }, 2000);
-  // $("div-span-wrap").hidden = true;
+  }, 1_000);
 }
 
 $("btn-send").addEventListener("click", vergleich);
 
-document.addEventListener("", function (e) {
-  if (e.keyCode === 13) {
+document.addEventListener("keypress", function (e) {
+  if (e === 13) {
     vergleich;
   }
 });
 function vergleich() {
-  console.log($("input").value);
-  if ($("input").value === "") {
+  console.log($("input-vermutung").value);
+  if ($("input-vermutung").value === null) {
     alert("Bitte Schätzung eingeben!");
     return;
   }
-  let meinTip = Number($("input").value);
+  let meinTip = Number($("input-vermuntung").value);
   $("input").value = "";
 
   if (arryOfSecretNumbers.includes(meinTip)) {

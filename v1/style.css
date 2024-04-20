@@ -48,6 +48,7 @@ span {
 #input-vermutung {
   padding-left: var(--padding-main);
   padding-right: var(--padding-main);
+  height: 3em;
 }
 
 #aZZ {
