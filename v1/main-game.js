@@ -1,12 +1,17 @@
 //
-const arryOfSecretNumbers = [];
+let arryOfSecretNumbers = [];
 
 function game() {
-  let aZZ = 3; // anzahlZufallsZahlen
+  // Arry leeren falls das vorhergehende Spiel nicht beendet wurde und somit das Arry nicht leer ist
+  arryOfSecretNumbers = [];
+
+  // DefaultValue für Anzahl Zufallszahlen
+  let aZZ = 3;
   if (Number($("aZZ").value)) {
-    aZZ = Number($("aZZ").value); // anzahlZufallsZahlen
+    aZZ = Number($("aZZ").value); // Eingabewert für Anzahl Zufallszahlen übernehmen
   }
 
+  // vorhandene Span Elemente aus vorangegangenen Spielen zurücksetzen
   {
     // Get a reference to the parent element
     const parentElement = $("div-span-wrap");
@@ -16,15 +21,20 @@ function game() {
     }
   }
 
-  for (let i = 0; i < aZZ; i++) {
-    const newSpan = document.createElement("span");
-    newSpan.setAttribute("class", "zz");
-
-    $("div-span-wrap").appendChild(newSpan);
-  }
-  $("div-span-wrap").hidden = false;
-
+  // leere Spanelemente erzeugen
   {
+    for (let i = 0; i < aZZ; i++) {
+      const newSpan = document.createElement("span");
+      newSpan.setAttribute("class", "zz");
+
+      $("div-span-wrap").appendChild(newSpan);
+    }
+  }
+
+  // Attribute hidden = false setzen
+  {
+    $("div-span-wrap").hidden = false;
+
     for (let i = 0; i < aZZ; i++) {
       document.getElementsByClassName("zz")[i].hidden = false;
     }
@@ -39,16 +49,15 @@ function game() {
 
   // Zufallszahlen nach 3 sec ausblenden
 
-  let i = document.getElementsByClassName("zz").length - 1;
-
   const interval = setInterval(() => {
-    if (i >= 0) {
-      document.getElementsByClassName("zz")[i].hidden = true;
-      i--;
-      if (i === -1) {
+    if (aZZ > 0) {
+      document.getElementsByClassName("zz")[aZZ - 1].hidden = true;
+      aZZ--;
+      if (aZZ === 0) {
         $("div-span-wrap").hidden = true;
       }
     } else {
+      $("input-vermutung").focus();
       clearInterval(interval);
     }
   }, 3_000);
@@ -72,7 +81,12 @@ function vergleich() {
       (() => {
         alert("Alle Zahlen gewusst");
         const jsConfetti = new JSConfetti();
-        jsConfetti.addConfetti();
+
+        for (let i = 0; i < 2; i++) {
+          setTimeout(() => {
+            jsConfetti.addConfetti();
+          }, i * 2_000);
+        }
       })();
       return;
     }
@@ -88,8 +102,14 @@ function vergleich() {
 
 $("btn-send").addEventListener("click", vergleich);
 
-document.addEventListener("keypress", (e) => {
+$("input-vermutung").addEventListener("keypress", (e) => {
   if (e.code === "Enter") {
     vergleich();
+  }
+});
+
+$("aZZ").addEventListener("keypress", (e) => {
+  if (e.code === "Enter") {
+    game();
   }
 });

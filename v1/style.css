@@ -54,8 +54,8 @@ span {
 #aZZ {
   padding-left: var(--padding-main);
 
-  font-size: 1em;
-  height: 2em;
+  font-size: 0.8em;
+  height: 3em;
 }
 
 .zz {
