@@ -55,9 +55,9 @@ function game() {
       aZZ--;
       if (aZZ === 0) {
         $("div-span-wrap").hidden = true;
+        $("input-vermutung").focus();
       }
     } else {
-      $("input-vermutung").focus();
       clearInterval(interval);
     }
   }, 3_000);
@@ -73,13 +73,14 @@ function vergleich() {
   $("input-vermutung").value = "";
 
   if (arryOfSecretNumbers.includes(meinTip)) {
-    $("ergebnis").innerHTML = "Richtig";
+    $("ergebnis").innerText = "Richtig";
     arryOfSecretNumbers.splice(arryOfSecretNumbers.indexOf(meinTip), 1);
     console.log(arryOfSecretNumbers);
 
     if (arryOfSecretNumbers.length === 0) {
-      (() => {
+      setTimeout(() => {
         alert("Alle Zahlen gewusst");
+
         const jsConfetti = new JSConfetti();
 
         for (let i = 0; i < 2; i++) {
@@ -87,7 +88,7 @@ function vergleich() {
             jsConfetti.addConfetti();
           }, i * 2_000);
         }
-      })();
+      }, 0);
       return;
     }
     return;
@@ -111,5 +112,6 @@ $("input-vermutung").addEventListener("keypress", (e) => {
 $("aZZ").addEventListener("keypress", (e) => {
   if (e.code === "Enter") {
     game();
+    $("aZZ").value = "";
   }
 });
