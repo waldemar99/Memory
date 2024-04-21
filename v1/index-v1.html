@@ -12,7 +12,7 @@
         type="text"
         size="31"
         id="aZZ"
-        placeholder="AnzahlZufallsZahlen oder starte mit 3"
+        placeholder="Anzahl Zufallszahlen oder Starte automatisch mit 3 Zahlen"
       />
 
       <div
@@ -26,7 +26,7 @@
       <div></div>
 
       <input id="input-vermutung" placeholder="Deine Vermutung" autofocus />
-      <button id="btn-send">Click here or Press Enter</button>
+      <button id="btn-send">Hier Clicken oder Enter Drücken</button>
       <div></div>
       <div id="ergebnis">Richtig oder Falsch</div>
     </div>
@@ -39,7 +39,7 @@
         margin-bottom: 20px;
       "
     >
-      New Game
+      Neues Spiel
     </button>
   </body>
   <script>
@@ -48,6 +48,8 @@
       return document.getElementById(str);
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
   <!-----------------------------------------------------FEATURE MAIN GAME-->
   <script src="./main-game.js"></script>
   <!-----------------------------------------------------FEATURE DBLCLK MOVE-->

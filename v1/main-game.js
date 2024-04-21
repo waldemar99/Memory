@@ -1,4 +1,5 @@
 //
+const arryOfSecretNumbers = [];
 
 function game() {
   let aZZ = 3; // anzahlZufallsZahlen
@@ -29,8 +30,6 @@ function game() {
     }
   }
 
-  const arryOfSecretNumbers = [];
-
   for (let i = 0; i < aZZ; i++) {
     const xi = Math.floor(Math.random() * 100);
     document.getElementsByClassName("zz")[i].innerHTML = `${xi}`;
@@ -52,24 +51,17 @@ function game() {
     } else {
       clearInterval(interval);
     }
-  }, 1_000);
+  }, 3_000);
 }
 
-$("btn-send").addEventListener("click", vergleich);
-
-document.addEventListener("keypress", function (e) {
-  if (e === 13) {
-    vergleich;
-  }
-});
 function vergleich() {
-  console.log($("input-vermutung").value);
-  if ($("input-vermutung").value === null) {
+  if (!$("input-vermutung").value) {
     alert("Bitte Schätzung eingeben!");
     return;
   }
-  let meinTip = Number($("input-vermuntung").value);
-  $("input").value = "";
+
+  let meinTip = Number($("input-vermutung").value);
+  $("input-vermutung").value = "";
 
   if (arryOfSecretNumbers.includes(meinTip)) {
     $("ergebnis").innerHTML = "Richtig";
@@ -77,13 +69,27 @@ function vergleich() {
     console.log(arryOfSecretNumbers);
 
     if (arryOfSecretNumbers.length === 0) {
-      alert("Alle Zahlen gewusst");
+      (() => {
+        alert("Alle Zahlen gewusst");
+        const jsConfetti = new JSConfetti();
+        jsConfetti.addConfetti();
+      })();
       return;
     }
     return;
-  }
+  } else {
+    document.getElementById(
+      "ergebnis"
+    ).innerText = `Falsch! Richtig wäre ${arryOfSecretNumbers.toString()}`;
 
-  document.getElementById(
-    "ergebnis"
-  ).innerText = `Falsch! Richtig wäre ${arryOfSecretNumbers.toString()}`;
+    return;
+  }
 }
+
+$("btn-send").addEventListener("click", vergleich);
+
+document.addEventListener("keypress", (e) => {
+  if (e.code === "Enter") {
+    vergleich();
+  }
+});

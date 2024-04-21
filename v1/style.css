@@ -61,3 +61,7 @@ span {
 .zz {
   margin: auto 5px;
 }
+
+#btn-send {
+  height: 2em;
+}
