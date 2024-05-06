@@ -2,19 +2,10 @@
 
 ## Ziel des Projektes ist es eine Web SinglePage zu erstellen, welche Zufallszahlen erzeugt 
     
-### Die Zahlen weden in einer einstellbaren zeit angezeit und dann unsichtbar gemacht 
+### Die Zahlen weden in einer einstellbaren Zeit angezeit und dann unsichtbar gemacht 
     Es bestelt danach die Möglichkeit die Zahen in ein Eingabefeld einzugeben 
     Das Programm überprüft die Eingabe mit der Vorgabe und zeigt dann das Erbenis als Richtig oder Falsch an 
 
-V1 Statisch 4 zufallszahllen generieren 
 
-V2 Seperate Script und CSS Dateien erstellen 
-
-
-!!!  INDEX-TEST.Vx 
-
-index-test-v0 
-    Prüfen ob die ENTER Taste gedrückt wurde (allgemein ob irgendeine Taste gedrückt wurde)
-
-    
+Getestet mit Chrome 
 
