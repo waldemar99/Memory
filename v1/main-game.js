@@ -1,7 +1,7 @@
 //
 let arryOfSecretNumbers = [];
 
-function game() {
+function game(zeit) {
   // Arry leeren falls das vorhergehende Spiel nicht beendet wurde und somit das Arry nicht leer ist
   arryOfSecretNumbers = [];
 
@@ -60,7 +60,7 @@ function game() {
     } else {
       clearInterval(interval);
     }
-  }, 3_000);
+  }, zeit);
 }
 
 function vergleich() {

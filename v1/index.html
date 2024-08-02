@@ -32,7 +32,7 @@
       <div id="ergebnis">Richtig oder Falsch</div>
     </div>
     <button
-      onclick="game()"
+      onclick="startGame(3000)"
       id="btn-new-game"
       style="
         background-color: aquamarine;
@@ -42,11 +42,24 @@
     >
       Neues Spiel
     </button>
+    <input
+      type="number"
+      name=""
+      id="zeit"
+      placeholder="Verzögerungszeit in ms"
+      step="1000"
+      value=""
+    />
   </body>
   <script>
     // Querry Function
     function $(str) {
       return document.getElementById(str);
+    }
+
+    function startGame() {
+      const delayValue = $("zeit").value || 3000; // Default to 3000 if no value is provided
+      game(parseInt(delayValue));
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
@@ -54,5 +67,5 @@
   <!-----------------------------------------------------FEATURE MAIN GAME-->
   <script src="./main-game.js"></script>
   <!-----------------------------------------------------FEATURE DBLCLK MOVE-->
-  <script src="./dblclk-move.js"></script>
+  <!-- <script src="./dblclk-move.js"></script> -->
 </html>
