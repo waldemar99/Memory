@@ -79,8 +79,6 @@ function vergleich() {
 
     if (arryOfSecretNumbers.length === 0) {
       setTimeout(() => {
-        alert("Alle Zahlen gewusst");
-
         const jsConfetti = new JSConfetti();
 
         for (let i = 0; i < 2; i++) {
