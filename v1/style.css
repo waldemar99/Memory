@@ -33,8 +33,7 @@ span {
   margin: var(--top-bottom-rigth);
 }
 
-#div-warp {
-  border: solid;
+#div-wrap {
   width: fit-content;
   height: fit-content;
 }
@@ -53,7 +52,6 @@ span {
 
 #aZZ {
   padding-left: var(--padding-main);
-
   font-size: 0.8em;
   height: 3em;
 }
@@ -63,5 +61,16 @@ span {
 }
 
 #btn-send {
-  height: 2em;
+  height: 3em;
+}
+
+.hover-text {
+  position: absolute;
+  display: none;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000;
+  pointer-events: none;
 }

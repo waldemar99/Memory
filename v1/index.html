@@ -32,7 +32,7 @@
       <div id="ergebnis">Richtig oder Falsch</div>
     </div>
     <button
-      onclick="startGame(3000)"
+      onclick="startGame()"
       id="btn-new-game"
       style="
         background-color: aquamarine;
@@ -47,9 +47,10 @@
       name=""
       id="zeit"
       placeholder="Verzögerungszeit in ms"
-      step="1000"
-      value=""
+      step="500"
+      min="0"
     />
+    <div id="hoverText" class="hover-text">Voreingestellt sind 3000 ms</div>
   </body>
   <script>
     // Querry Function
@@ -58,14 +59,32 @@
     }
 
     function startGame() {
-      const delayValue = $("zeit").value || 3000; // Default to 3000 if no value is provided
+      const delayValue = $("zeit").value || 2000; // Default to 3000 if no value is provided
       game(parseInt(delayValue));
     }
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 
   <!-----------------------------------------------------FEATURE MAIN GAME-->
   <script src="./main-game.js"></script>
   <!-----------------------------------------------------FEATURE DBLCLK MOVE-->
   <!-- <script src="./dblclk-move.js"></script> -->
+  <script>
+    const inputFieldZeitVerzoegerung = document.getElementById("zeit");
+    const hoverText = document.getElementById("hoverText");
+
+    inputFieldZeitVerzoegerung.addEventListener("mouseover", function (event) {
+      hoverText.style.display = "block";
+    });
+
+    inputFieldZeitVerzoegerung.addEventListener("mousemove", function (event) {
+      hoverText.style.left = event.pageX + 10 + "px";
+      hoverText.style.top = event.pageY - 30 + "px";
+    });
+
+    inputFieldZeitVerzoegerung.addEventListener("mouseout", function () {
+      hoverText.style.display = "none";
+    });
+  </script>
 </html>
