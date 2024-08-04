@@ -49,7 +49,7 @@ function game(zeit) {
 
   // Zufallszahlen nach 3 sec ausblenden
 
-  const interval = setInterval(() => {
+  const intervalId = setInterval(() => {
     if (aZZ > 0) {
       document.getElementsByClassName("zz")[aZZ - 1].hidden = true;
       aZZ--;
@@ -58,7 +58,7 @@ function game(zeit) {
         $("input-vermutung").focus();
       }
     } else {
-      clearInterval(interval);
+      clearInterval(intervalId);
     }
   }, zeit);
 }
@@ -89,6 +89,8 @@ function vergleich() {
           }, i * 2_000);
         }
       }, 0);
+
+      setBtnNewGameActive();
       return;
     }
     return;
@@ -99,6 +101,27 @@ function vergleich() {
 
     return;
   }
+}
+
+function setBtnNewGameActive() {
+  const button = document.getElementById("btn-new-game");
+
+  // Focus the button
+  button.focus();
+
+  // Add an event listener for the Enter key press
+  document.addEventListener("keydown", (event) => {
+    if (
+      (event.key === "Enter" || event.key === "NumpadEnter") &&
+      document.activeElement === button
+    ) {
+      // Prevent default action to avoid submitting forms, etc.
+      event.preventDefault();
+
+      // Trigger the button's click event
+      button.click();
+    }
+  });
 }
 
 $("btn-send").addEventListener("click", vergleich);
