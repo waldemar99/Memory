@@ -104,13 +104,13 @@ function vergleich() {
 $("btn-send").addEventListener("click", vergleich);
 
 $("input-vermutung").addEventListener("keypress", (e) => {
-  if (e.code === "Enter") {
+  if (e.code === "Enter" || e.code === "NumpadEnter") {
     vergleich();
   }
 });
 
 $("aZZ").addEventListener("keypress", (e) => {
-  if (e.code === "Enter") {
+  if (e.code === "Enter" || e.code === "NumpadEnter") {
     game();
     $("aZZ").value = "";
   }
